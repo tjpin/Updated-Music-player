@@ -1,0 +1,83 @@
+<PlayerWindow>:
+    NavigationLayout:
+        ScreenManager:
+            id: player_manager
+            Screen:
+                name: 'plist'
+                BlackBox:
+                    orientation: 'vertical'
+                    padding: 10
+                    BlackBox:
+                        size_hint_y: .1
+                        WhiteButton:
+                            icon: 'menu'
+                            on_release: nav_drawer.set_state()
+                        Label:
+                            text: 'Dark Player Pro'
+                            bold: True
+                            font_size: 30
+                        WhiteButton:
+                            icon: 'play-speed'
+                            on_release: player_manager.current = 'active'
+                    BlackBox:
+                        ScrollView:
+                            MDList:
+                                id: playlist
+            Screen:
+                name: 'active'
+                BoxLayout:
+                    orientation: 'vertical'
+                    BlackBox:
+                        size_hint_y: .1
+                        WhiteButton:
+                            icon: 'playlist-music'
+                            on_release: player_manager.current = 'plist'
+                    ClearBox:
+                        size_hint_y: .7
+                        Image:
+                            id: backimage
+                            source: 'disc.png'
+                    BlackBox:
+                        size_hint_y: .1
+                        Label:
+                            id: selected
+                    BlackBox:
+                        size_hint_y: .1
+                        ClearBox:
+                            WhiteButton:
+                                icon: 'skip-previous'
+                        BlackBox:
+                            WhiteButton:
+                                icon: 'play'
+#                                on_release: self.icon = 'pause'
+                                on_release: root.playing.stop()
+                        BlackBox:
+                            WhiteButton:
+                                icon: 'skip-next'
+                                on_release: root.playing.play()
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            ClearBox:
+
+
+<BlackBox@BoxLayout>:
+    canvas.before:
+        Color:
+            rgba: 0,0,0,1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+<ClearBox@BoxLayout>:
+    canvas.before:
+        Color:
+            rgba: 0,0,0,.9
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<WhiteButton@MDIconButton>:
+    theme_text_color: 'Custom'
+    text_color: 1,1,1,1
+    user_font_size: '30sp'
+    pos_hint: {"center_x": .5, "Center_y": .5}
