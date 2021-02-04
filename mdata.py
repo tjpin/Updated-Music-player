@@ -2,7 +2,7 @@ import os
 from pprint import pprint
 from collections import defaultdict
 
-path = r'\Users\lazar\Desktop\statics'
+path = r'\Users\music-path'
 music_list = []
 music_list2 = []
 
