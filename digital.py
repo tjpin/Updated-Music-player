@@ -16,7 +16,7 @@ class PlayerWindow(BoxLayout):
     music_list2 = []
     full = {}
     playing = ''
-    directory = r'\Users\lazar\Desktop\statics'
+    directory = r'\Users\music-path'
 
     def __init__(self, **kwargs):
         super(PlayerWindow, self).__init__(**kwargs)
